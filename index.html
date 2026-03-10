@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北京回火科技有限责任公司 - 深度学习模型优化专家</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        // Tailwind 配置
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F3460', // 主深蓝
+                        secondary: '#1A5F7A', // 次蓝
+                        light: '#F5F7FA', // 浅灰背景
+                        dark: '#1E293B', // 深灰文字
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .section-padding {
+                @apply py-16 md:py-24;
+            }
+            .container-custom {
+                @apply container mx-auto px-4 md:px-8 lg:px-12;
+            }
+            .title-h1 {
+                @apply text-[clamp(2rem,5vw,3rem)] font-bold text-primary mb-6 md:mb-8;
+            }
+            .title-h2 {
+                @apply text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-primary mb-4 md:mb-6 text-center;
+            }
+            .title-h3 {
+                @apply text-[clamp(1.2rem,2vw,1.8rem)] font-semibold text-secondary mb-3;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #F9FAFC;
+        }
+        .nav-fixed {
+            @apply fixed bg-white/95 shadow-md backdrop-blur-sm;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 - 加入LOGO -->
+    <nav id="navbar" class="w-full top-0 z-50 py-4 transition-all duration-300">
+        <div class="container-custom flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2">
+                <!-- 公司LOGO -->
+                <span class="text-primary text-2xl font-bold">北京回火科技</span>
+                <span class="text-sm text-dark/70 hidden md:inline-block">Backfiretempering</span>
+            </a>
+            <!-- 桌面导航 -->
+            <ul class="hidden md:flex gap-8 text-dark">
+                <li><a href="#about" class="hover:text-primary font-medium">公司简介</a></li>
+                <li><a href="#tech" class="hover:text-primary font-medium">核心技术</a></li>
+                <li><a href="#scene" class="hover:text-primary font-medium">适用场景</a></li>
+                <li><a href="#promise" class="hover:text-primary font-medium">效果保障</a></li>
+                <li><a href="#service" class="hover:text-primary font-medium">合作保障</a></li>
+                <li><a href="#case" class="hover:text-primary font-medium">成功案例</a></li>
+                <li><a href="#contact" class="hover:text-primary font-medium">合作咨询</a></li>
+            </ul>
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-primary text-2xl">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <!-- 移动端导航 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg absolute w-full top-full left-0 py-4 px-4">
+            <ul class="flex flex-col gap-4 text-dark">
+                <li><a href="#about" class="py-2 hover:text-primary font-medium">公司简介</a></li>
+                <li><a href="#tech" class="py-2 hover:text-primary font-medium">核心技术</a></li>
+                <li><a href="#scene" class="py-2 hover:text-primary font-medium">适用场景</a></li>
+                <li><a href="#promise" class="py-2 hover:text-primary font-medium">效果保障</a></li>
+                <li><a href="#service" class="py-2 hover:text-primary font-medium">合作保障</a></li>
+                <li><a href="#case" class="py-2 hover:text-primary font-medium">成功案例</a></li>
+                <li><a href="#contact" class="py-2 hover:text-primary font-medium">合作咨询</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首屏banner -->
+    <header class="bg-primary text-white py-20 md:py-32">
+        <div class="container-custom text-center md:text-left md:flex items-center justify-between">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-[clamp(2.2rem,5vw,3.5rem)] font-bold mb-4">深度学习模型优化专家</h1>
+                <p class="text-lg md:text-xl text-white/90 mb-8 max-w-lg">清华系AI创企，专注底层模型优化，为您实现算力降本、体验升级、性能提质</p>
+                <a href="#contact" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all">
+                    立即咨询合作
+                </a>
+            </div>
+            <div class="md:w-5/12">
+                <img src="logo.png" alt="北京回火科技LOGO">
+            </div>
+        </div>
+    </header>
+
+    <!-- 公司简介 -->
+    <section id="about" class="section-padding bg-white">
+        <div class="container-custom">
+            <h2 class="title-h2">公司简介</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 核心定位 -->
+                <div class="bg-light p-6 rounded-lg card-hover">
+                    <div class="text-primary text-3xl mb-4"><i class="fa fa-briefcase"></i></div>
+                    <h3 class="title-h3">核心定位</h3>
+                    <p class="text-dark/80">清华系AI创企，由清华大学创业团队创立，专注于深度学习模型优化的AI技术公司。</p>
+                </div>
+                <!-- 团队构成 -->
+                <div class="bg-light p-6 rounded-lg card-hover">
+                    <div class="text-primary text-3xl mb-4"><i class="fa fa-users"></i></div>
+                    <h3 class="title-h3">团队构成</h3>
+                    <p class="text-dark/80">博士级研发力量，核心技术人员均为理工科与人工智能交叉方向的博士，具备深厚科研与技术实力。</p>
+                </div>
+                <!-- 技术深耕 -->
+                <div class="bg-light p-6 rounded-lg card-hover">
+                    <div class="text-primary text-3xl mb-4"><i class="fa fa-code"></i></div>
+                    <h3 class="title-h3">技术深耕</h3>
+                    <p class="text-dark/80">聚焦深度学习模型轻量化、网络结构优化及模型精度定向提升，深耕底层技术。</p>
+                </div>
+                <!-- 核心价值 -->
+                <div class="bg-light p-6 rounded-lg card-hover">
+                    <div class="text-primary text-3xl mb-4"><i class="fa fa-line-chart"></i></div>
+                    <h3 class="title-h3">核心价值</h3>
+                    <p class="text-dark/80">凭借底层算法设计提供定制化方案，从根源解决行业痛点，实现降本增效提质。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心技术优势 -->
+    <section id="tech" class="section-padding bg-light">
+        <div class="container-custom">
+            <h2 class="title-h2">核心技术优势</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
+                <!-- 普通模式 -->
+                <div class="bg-white p-8 rounded-lg shadow">
+                    <h3 class="title-h3 text-red-600">普通模式：依赖开源，局限明显</h3>
+                    <ul class="space-y-4 text-dark/80">
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-times-circle text-red-500 mt-1"></i>
+                            <div><span class="font-semibold">过度依赖开源</span>：算法实现严重依赖开源框架和预训练模型，缺乏自主创新。</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-times-circle text-red-500 mt-1"></i>
+                            <div><span class="font-semibold">调参式开发</span>：核心工作集中在数据处理和参数调优，难以触及模型性能的天花板。</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-times-circle text-red-500 mt-1"></i>
+                            <div><span class="font-semibold">加速手段单一且有限</span>：依赖传统量化、剪枝等“减法”操作，牺牲精度换有限加速，易导致性能受损。</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 我们的方案 -->
+                <div class="bg-primary/5 p-8 rounded-lg shadow border border-primary/20">
+                    <h3 class="title-h3 text-primary">我们的方案：底层创新，根源优化</h3>
+                    <ul class="space-y-4 text-dark/80">
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-primary mt-1"></i>
+                            <div><span class="font-semibold">底层网络原创设计</span>：不依赖开源模型，根据业务目标和硬件环境，原创设计并深度优化网络结构。</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-primary mt-1"></i>
+                            <div><span class="font-semibold">硬件-算法协同优化</span>：针对NPU/MCU/CPU/GPU等硬件特性，设计专属高效网络，最大化利用硬件性能。</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-primary mt-1"></i>
+                            <div><span class="font-semibold">效果与效率双优</span>：从根源保证模型精度和速度，轻松突破传统方法的性能瓶颈。</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-primary mt-1"></i>
+                            <div><span class="font-semibold">支持二次优化</span>：轻量化模型可通过传统压缩技术二次加速，实现“优化+压缩”双重提速，挖掘极致硬件潜力。</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心适用场景 -->
+    <section id="scene" class="section-padding bg-white">
+        <div class="container-custom">
+            <h2 class="title-h2">核心适用场景</h2>
+            <!-- 轻量化/推理加速 -->
+            <div class="mb-16">
+                <h3 class="title-h3 text-center mb-8">轻量化/推理加速</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- 云端服务器推理 -->
+                    <div class="bg-light p-6 rounded-lg card-hover">
+                        <div class="text-secondary text-2xl mb-3"><i class="fa fa-cloud"></i></div>
+                        <h4 class="font-semibold text-lg mb-2">云端服务器推理</h4>
+                        <p class="text-dark/70 text-sm mb-3"><b>痛点</b>：算力租赁成本高，高峰期排队，推理效率低</p>
+                        <p class="text-dark/80"><b>方案</b>：减少算力开销，提升并发处理与推理效率</p>
+                    </div>
+                    <!-- 端侧硬件部署 -->
+                    <div class="bg-light p-6 rounded-lg card-hover">
+                        <div class="text-secondary text-2xl mb-3"><i class="fa fa-mobile"></i></div>
+                        <h4 class="font-semibold text-lg mb-2">端侧硬件部署</h4>
+                        <p class="text-dark/70 text-sm mb-3"><b>痛点</b>：手机/嵌入式设备算力内存有限，无法运行大型模型</p>
+                        <p class="text-dark/80"><b>方案</b>：模型极致压缩优化，适配端侧硬件，实现本地实时推理</p>
+                    </div>
+                    <!-- 现有模型性能瓶颈 -->
+                    <div class="bg-light p-6 rounded-lg card-hover">
+                        <div class="text-secondary text-2xl mb-3"><i class="fa fa-tachometer"></i></div>
+                        <h4 class="font-semibold text-lg mb-2">现有模型性能瓶颈</h4>
+                        <p class="text-dark/70 text-sm mb-3"><b>痛点</b>：推理速度慢、显存占用高，无法满足高并发/实时性要求</p>
+                        <p class="text-dark/80"><b>方案</b>：底层优化模型结构，显著提升运行效率，释放业务潜力</p>
+                    </div>
+                    <!-- 低功耗需求场景 -->
+                    <div class="bg-light p-6 rounded-lg card-hover">
+                        <div class="text-secondary text-2xl mb-3"><i class="fa fa-battery-three-quarters"></i></div>
+                        <h4 class="font-semibold text-lg mb-2">低功耗需求场景</h4>
+                        <p class="text-dark/70 text-sm mb-3"><b>痛点</b>：智能穿戴、物联网设备功耗敏感，续航压力大</p>
+                        <p class="text-dark/80"><b>方案</b>：算法级功耗优化，降低设备能耗，延长续航时间</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 精度定向提升 -->
+            <div>
+                <h3 class="title-h3 text-center mb-8">精度定向提升</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- 现有模型精度不足 -->
+                    <div class="bg-light p-6 rounded-lg card-hover">
+                        <div class="text-secondary text-2xl mb-3"><i class="fa fa-search-plus"></i></div>
+                        <h4 class="font-semibold text-lg mb-2">现有模型精度不足</h4>
+                        <p class="text-dark/70 text-sm mb-3"><b>痛点</b>：推理速度达标但精度未满足业务指标，直接影响效果</p>
+                        <p class="text-dark/80"><b>方案</b>：定向提升模型精度，解决核心业务痛点</p>
+                    </div>
+                    <!-- 业务指标升级 -->
+                    <div class="bg-light p-6 rounded-lg card-hover">
+                        <div class="text-secondary text-2xl mb-3"><i class="fa fa-level-up"></i></div>
+                        <h4 class="font-semibold text-lg mb-2">业务指标升级</h4>
+                        <p class="text-dark/70 text-sm mb-3"><b>痛点</b>：业务发展要求更高精度，需在不显著增加算力下优化性能</p>
+                        <p class="text-dark/80"><b>方案</b>：在效率与性能之间找到最佳平衡点</p>
+                    </div>
+                    <!-- 核心场景精准性需求 -->
+                    <div class="bg-light p-6 rounded-lg card-hover">
+                        <div class="text-secondary text-2xl mb-3"><i class="fa fa-shield"></i></div>
+                        <h4 class="font-semibold text-lg mb-2">核心场景精准性需求</h4>
+                        <p class="text-dark/70 text-sm mb-3"><b>痛点</b>：金融风控、安防监控、工业质检等领域对精准度要求极高</p>
+                        <p class="text-dark/80"><b>方案</b>：有效满足高要求场景，降低风险提升价值</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精度与效果承诺 -->
+    <section id="promise" class="section-padding bg-light">
+        <div class="container-custom">
+            <h2 class="title-h2">精度与效果承诺</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
+                <!-- 轻量化加速场景 -->
+                <div class="bg-white p-8 rounded-lg shadow">
+                    <h3 class="title-h3">轻量化加速场景</h3>
+                    <ul class="space-y-5 text-dark/80">
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-balance-scale text-primary text-xl mt-1"></i>
+                            <div><span class="font-semibold">速度与精度平衡</span>：显著提升推理速度，确保精度损失在业务可接受范围内。</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-compress text-primary text-xl mt-1"></i>
+                            <div><span class="font-semibold">参数冗余消除</span>：去除冗余参数，实现推理加速的同时，模型精度同步提升。</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 精度定向提升场景 -->
+                <div class="bg-white p-8 rounded-lg shadow">
+                    <h3 class="title-h3">精度定向提升场景</h3>
+                    <ul class="space-y-5 text-dark/80">
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-sliders text-primary text-xl mt-1"></i>
+                            <div><span class="font-semibold">定制化精度目标</span>：根据客户具体业务要求，设定并达成定制化的精度提升指标。</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-cogs text-primary text-xl mt-1"></i>
+                            <div><span class="font-semibold">算力效率兼顾</span>：严格控制算力与速度开销，确保优化后模型具备高效运行能力。</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 前置评估保障机制 -->
+            <div class="bg-primary/10 p-6 rounded-lg border border-primary/20">
+                <h3 class="title-h3 text-primary text-center">前置评估保障机制</h3>
+                <p class="text-dark/80 text-center max-w-3xl mx-auto">
+                    合作开始前为客户模型提供专业优化可行性评估，常规模型提供<span class="font-semibold">免费初步评估</span>；复杂模型按实际资源消耗收取少量成本费用，评估后提供详细技术报告和预期效果分析，从源头上保障交付与客户预期一致。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作保障 -->
+    <section id="service" class="section-padding bg-white">
+        <div class="container-custom">
+            <h2 class="title-h2">合作保障</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- 效果刚性保障 -->
+                <div class="bg-light p-6 rounded-lg text-center card-hover">
+                    <div class="text-primary text-3xl mb-4 mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <h4 class="font-semibold mb-2">效果刚性保障</h4>
+                    <p class="text-dark/70 text-sm">以合同明确优化目标，确保交付效果达标，让投入有明确回报</p>
+                </div>
+                <!-- 硬件深度适配 -->
+                <div class="bg-light p-6 rounded-lg text-center card-hover">
+                    <div class="text-primary text-3xl mb-4 mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                        <i class="fa fa-microchip"></i>
+                    </div>
+                    <h4 class="font-semibold mb-2">硬件深度适配</h4>
+                    <p class="text-dark/70 text-sm">确保优化后模型完美运行在指定硬件环境，实现无缝部署</p>
+                </div>
+                <!-- 完整成果交付 -->
+                <div class="bg-light p-6 rounded-lg text-center card-hover">
+                    <div class="text-primary text-3xl mb-4 mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                        <i class="fa fa-file-code-o"></i>
+                    </div>
+                    <h4 class="font-semibold mb-2">完整成果交付</h4>
+                    <p class="text-dark/70 text-sm">提供完整代码或ONNX、SDK等标准化模型文件，方便快速集成</p>
+                </div>
+                <!-- 一站式增值服务 -->
+                <div class="bg-light p-6 rounded-lg text-center card-hover">
+                    <div class="text-primary text-3xl mb-4 mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                        <i class="fa fa-handshake-o"></i>
+                    </div>
+                    <h4 class="font-semibold mb-2">一站式增值服务</h4>
+                    <p class="text-dark/70 text-sm">从硬件采购到模型部署的全流程服务，解决后顾之忧</p>
+                </div>
+                <!-- 正规合规合作 -->
+                <div class="bg-light p-6 rounded-lg text-center card-hover">
+                    <div class="text-primary text-3xl mb-4 mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                        <i class="fa fa-file-text-o"></i>
+                    </div>
+                    <h4 class="font-semibold mb-2">正规合规合作</h4>
+                    <p class="text-dark/70 text-sm">签订正规合同，开具合规发票，保障合作权益与财务合规</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 典型成功案例 -->
+    <section id="case" class="section-padding bg-light">
+        <div class="container-custom">
+            <h2 class="title-h2">典型成功案例</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 案例1：智能戒指内置算法加速 -->
+                <div class="bg-white p-8 rounded-lg shadow card-hover">
+                    <h3 class="title-h3 text-secondary">智能戒指内置算法加速</h3>
+                    <p class="text-dark/80 mb-4"><b>业务挑战</b>：PC端识别算法移植至智能戒指MCU，算力/内存极度有限，无法本地实时识别</p>
+                    <p class="text-dark/80 mb-4"><b>客户要求</b>：模型参数压缩至1/10以上、推理速度加速10倍、识别率下降≤1%</p>
+                    <div class="bg-gray-50 p-4 rounded-lg mb-2">
+                        <p class="text-dark/80"><span class="font-semibold">交付成果</span>：参数优化至1/11，推理速度加速10倍（单次22ms/45fps），精度与原模型一致</p>
+                    </div>
+                    <p class="text-dark/70 text-sm"><b>业务价值</b>：成功实现本地实时识别，降低设备功耗</p>
+                </div>
+                <!-- 案例2：游戏自动捏脸算法端侧移植 -->
+                <div class="bg-white p-8 rounded-lg shadow card-hover">
+                    <h3 class="title-h3 text-secondary">游戏自动捏脸算法端侧移植</h3>
+                    <p class="text-dark/80 mb-4"><b>业务挑战</b>：云端GPU推理有网络延迟/排队问题，成本高，用户体验差</p>
+                    <p class="text-dark/80 mb-4"><b>客户要求</b>：移植至手机端、低端安卓机处理时间&lt;2秒、精度损失可接受</p>
+                    <div class="bg-gray-50 p-4 rounded-lg mb-2">
+                        <p class="text-dark/80"><span class="font-semibold">交付成果</span>：低端红米手机识别&lt;1秒，精度仅下降0.3%，年省GPU租赁成本约20万元</p>
+                    </div>
+                    <p class="text-dark/70 text-sm"><b>业务价值</b>：用户体验大幅提升，实现降本增效</p>
+                </div>
+                <!-- 案例3：云端推荐系统模型优化降本 -->
+                <div class="bg-white p-8 rounded-lg shadow card-hover">
+                    <h3 class="title-h3 text-secondary">云端推荐系统模型优化降本</h3>
+                    <p class="text-dark/80 mb-4"><b>业务挑战</b>：电商平台推荐系统用户量激增，GPU集群扩容导致算力租赁成本高昂</p>
+                    <p class="text-dark/80 mb-4"><b>客户要求</b>：保精度提效率、显著降本、线上服务零中断</p>
+                    <div class="bg-gray-50 p-4 rounded-lg mb-2">
+                        <p class="text-dark/80"><span class="font-semibold">交付成果</span>：单次推理计算量降30%，吞吐量提40%，年省服务器租赁约200万元（减3台GPU，月省15万+）</p>
+                    </div>
+                    <p class="text-dark/70 text-sm"><b>业务价值</b>：大幅降低算力成本，保障业务高并发稳定运行</p>
+                </div>
+                <!-- 案例4：工业视觉检测精度提升 -->
+                <div class="bg-white p-8 rounded-lg shadow card-hover">
+                    <h3 class="title-h3 text-secondary">工业视觉检测精度提升</h3>
+                    <p class="text-dark/80 mb-4"><b>业务挑战</b>：零部件AI视觉检测对微小裂纹/色差识别误判漏检，影响品质并增加售后风险</p>
+                    <p class="text-dark/80 mb-4"><b>客户要求</b>：定向提升微小缺陷识别精度、不显著增加推理时间</p>
+                    <div class="bg-gray-50 p-4 rounded-lg mb-2">
+                        <p class="text-dark/80"><span class="font-semibold">交付成果</span>：裂纹识别准确率相对提升5%，色差提升3%，推理时间增加&lt;10%</p>
+                    </div>
+                    <p class="text-dark/70 text-sm"><b>业务价值</b>：降低不良品流出风险，提升产品良率</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作咨询 - 替换微信联系方式+添加二维码 -->
+    <section id="contact" class="section-padding bg-primary text-white">
+        <div class="container-custom text-center">
+            <h2 class="title-h2 text-white">合作咨询</h2>
+            <p class="text-xl text-white/90 max-w-2xl mx-auto mb-12">基于您的业务场景与硬件环境，量身打造AI模型优化解决方案，立即联系我们获取免费模型评估服务</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                <!-- 邮箱 -->
+                <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
+                    <div class="text-3xl mb-4"><i class="fa fa-envelope-o"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">商务邮箱</h3>
+                    <a href="mailto:qiaokangqi@huihuolab.ltd" class="text-white/90 hover:text-white underline">qiaokangqi@huihuolab.ltd</a>
+                </div>
+                <!-- 微信 - 替换联系方式+添加二维码 -->
+                <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
+                    <div class="text-3xl mb-4"><i class="fa fa-wechat"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">商务微信</h3>
+                    <p class="text-white/90 mb-4 text-lg">qiaokangqi（乔总监）</p>
+                    <!-- 微信二维码 -->
+                    <img src="wechat.jpg" alt="回火科技商务微信二维码" class="w-32 h-32 mx-auto object-contain rounded-lg border-2 border-white/20">
+                </div>
+            </div>
+            <p class="mt-10 text-white/80 text-lg">期待与您携手，共同推动AI技术落地，共创AI新价值</p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white/80 py-8">
+        <div class="container-custom text-center">
+            <p class="mb-2">北京回火科技有限责任公司 | Backfiretempering</p>
+            <p class="text-sm text-white/60">© 2026 版权所有</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏固定
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-fixed');
+            } else {
+                navbar.classList.remove('nav-fixed');
+            }
+        });
+
+        // 移动端菜单
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // 移动端菜单点击后关闭
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>
