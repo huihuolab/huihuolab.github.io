@@ -60,13 +60,16 @@
     <!-- 导航栏 - 加入LOGO -->
     <nav id="navbar" class="w-full top-0 z-50 py-4 transition-all duration-300">
         <div class="container-custom flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2">
+            <a href="#" class="flex items-center gap-3">
                 <!-- 公司LOGO -->
-                <span class="text-primary text-2xl font-bold">北京回火科技</span>
-                <span class="text-sm text-dark/70 hidden md:inline-block">Backfiretempering</span>
+                <img src="img/logo_1.png" alt="北京回火科技LOGO" class="h-10 w-auto">
+                <div>
+                    <span class="text-primary text-2xl font-bold">北京回火科技</span>
+                    <span class="text-sm text-dark/70 hidden md:inline-block">Backfiretempering</span>
+                </div>
             </a>
             <!-- 桌面导航 -->
-            <ul class="hidden md:flex gap-8 text-dark">
+            <ul class="hidden md:flex gap-4 md:gap-6 text-dark">
                 <li><a href="#about" class="hover:text-primary font-medium">公司简介</a></li>
                 <li><a href="#tech" class="hover:text-primary font-medium">核心技术</a></li>
                 <li><a href="#scene" class="hover:text-primary font-medium">适用场景</a></li>
@@ -95,17 +98,16 @@
     </nav>
 
     <!-- 首屏banner -->
-    <header class="bg-primary text-white py-20 md:py-32">
-        <div class="container-custom text-center md:text-left md:flex items-center justify-between">
-            <div class="md:w-1/2 mb-8 md:mb-0">
-                <h1 class="text-[clamp(2.2rem,5vw,3.5rem)] font-bold mb-4">深度学习模型优化专家</h1>
-                <p class="text-lg md:text-xl text-white/90 mb-8 max-w-lg">清华系AI创企，专注底层模型优化，为您实现算力降本、体验升级、性能提质</p>
-                <a href="#contact" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all">
+    <header class="bg-primary text-white py-24 md:py-36">
+        <div class="container-custom">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-[clamp(2.5rem,6vw,4rem)] font-bold mb-6 leading-tight">深度学习模型优化专家</h1>
+                <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    清华系AI创企，专注底层模型优化，为您实现算力降本、体验升级、性能提质
+                </p>
+                <a href="#contact" class="bg-white text-primary px-10 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all inline-block text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 duration-300">
                     立即咨询合作
                 </a>
-            </div>
-            <div class="md:w-5/12">
-                <img src="img/logo.png" alt="北京回火科技LOGO">
             </div>
         </div>
     </header>
